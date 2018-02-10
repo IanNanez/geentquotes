@@ -1,29 +1,10 @@
-# # Import smtplib for the actual sending function
-# import smtplib
-#
-# # Import the email modules we'll need
-# from email.mime.text import MIMEText
-#
-# # Open a plain text file for reading.  For this example, assume that
-# # the text file contains only ASCII characters.
-# # fp = open(textfile, 'rb')
-# # Create a text/plain message
-# #fp.close()
-#
-# msg = "hello!"
-#
-# me == "green.t.quotes@gmail.com"
-# you == "inaneze@gmail.com"
-# msg['Subject'] = 'The contents of %s' % textfile
-# msg['From'] = me
-# msg['To'] = you
-#
-# # Send the message via our own SMTP server, but don't include the
-# # envelope header.
-# s = smtplib.SMTP('localhost')
-# s.sendmail(me, [you], msg.as_string())
-# s.quit()
+def send_simple_message():
+    return requests.post(
+        "https://api.mailgun.net/v3/sandbox861647c9ee8d474e950bb188c549808b.mailgun.org/messages",
+        auth=("api", "key-4df658831a75f41a44941ed2d7aa39f9"),
+        data={"from": "Mailgun Sandbox <postmaster@sandbox861647c9ee8d474e950bb188c549808b.mailgun.org>",
+              "to": "Ian Nanez <inaneze@gmail.com>",
+              "subject": "Hello Ian Nanez",
+              "text": "Congratulations Ian Nanez, you just sent an email with Mailgun!  You are truly awesome!"})
 
-
-print("Hello")
-print("How are you?")
+send_simple_message
